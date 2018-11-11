@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0ea54af4d5a6034489e489c276d1f595
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - twoLaneRoad: {fileID: 100004, guid: e5de30d1dec44b542aab4d96ce658c3c, type: 3}
+  - fourLaneRoad: {fileID: 100024, guid: 75162e0da2f173f479827da88338dd1c, type: 3}
+  - car: {fileID: 100010, guid: 9ea2ea91c8ce9fa41abab502c21dce33, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
