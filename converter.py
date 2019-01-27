@@ -17,7 +17,7 @@ if not os.path.isdir(path):
 
 'Diese Funktion liest aus einem Ordner alle Dateien aus und wandelt jedes Bild' \
 'Die dazugehörige Zeile in einen Datenvektor um'
-def readFolder(path, trainl, traind):
+def readFolder(path, trainlBox, trainlLane, traind):
     carCoords = []
     with open(os.path.join(path, "carCoords.txt")) as f:
         carCoords.extend(f.readlines())
@@ -50,27 +50,37 @@ def readFolder(path, trainl, traind):
         coordData = carCoords[index]
 
         'Die einzelnen Daten der Bounding Boxes extrahieren'
-        boxesData = coordData.split(';')
+        pictureData = coordData.split(';')
 
         'zunächst wird nur eine Bounding Box erkannt (die erste)'
-        boxValues = boxesData[0].split(',')
-        values = np.empty([9])
-        if len(boxValues) > 1:
-            for value in boxValues:
-                np.append(values, float(value))
-        trainl.append(np.asarray(values))
+        pictureValues = pictureData[0].split(',')
+        boxValues = np.empty([8])
+        laneValues = np.zeros([8])
+
+        if len(pictureValues) > 1:
+            'Zunächst die Lane extrahieren'
+            laneValues[int(pictureValues[0])] = 1
+
+            'Danach die Daten der BoundingBox holen'
+            for i in range(1, 8):
+                np.append(boxValues, float(pictureValues[i]))
+        trainlLane.append(np.asarray(laneValues))
+        trainlBox.append(np.asarray(boxValues))
+
 
 print("Folders to be converted:")
-trainl = []
+trainlBox = []
+trainlLane = []
 traind = []
 for root, dirs, files in os.walk(path, topdown=False):
     for name in dirs:
         print(os.path.join(root, name))
-        readFolder(os.path.join(root, name), trainl, traind)
+        readFolder(os.path.join(root, name), trainlBox, trainlLane, traind)
 
 filename = 'gulasch.pkl.gz'
 traind = np.asarray(traind)
-trainl = np.asarray(trainl)
-dataObj = {"trainl": trainl, "traind":traind}
+trainlBox = np.asarray(trainlBox)
+trainlLane = np.asarray(trainlLane)
+dataObj = {"trainlBox": trainlBox, "trainlLane": trainlLane, "traind":traind}
 with gzip.open(os.path.join(path, filename), 'wb') as handle:
     pkl.dump(dataObj, handle, protocol=pkl.HIGHEST_PROTOCOL)
