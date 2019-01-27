@@ -17,7 +17,7 @@ if not os.path.isdir(path):
 
 'Diese Funktion liest aus einem Ordner alle Dateien aus und wandelt jedes Bild' \
 'Die dazugehörige Zeile in einen Datenvektor um'
-def readFolder(path, dataVec):
+def readFolder(path, trainl, traind):
     carCoords = []
     with open(os.path.join(path, "carCoords.txt")) as f:
         carCoords.extend(f.readlines())
@@ -32,10 +32,10 @@ def readFolder(path, dataVec):
     for fileName in pictures:
         'load Image into numpy array'
         img = Image.open(os.path.join(path, fileName))
-        dataVec[0].append(np.asarray(img))
+        traind.append(np.asarray(img))
 
-        actualPicIndex = len(dataVec[0]) - 1
-        dataVec[0][actualPicIndex] = dataVec[0][actualPicIndex][:,:,0:1]
+        actualPicIndex = len(traind) - 1
+        traind[actualPicIndex] = traind[actualPicIndex][:,:,0:1]
 
         'hole den Index des Bildes um die entsprechenden Daten aus carCoords.txt zu holen'
         fileNameParts = fileName.split('.')
@@ -54,21 +54,23 @@ def readFolder(path, dataVec):
 
         'zunächst wird nur eine Bounding Box erkannt (die erste)'
         boxValues = boxesData[0].split(',')
-        values = []
+        values = np.empty([9])
         if len(boxValues) > 1:
             for value in boxValues:
-                values.append(float(value))
-        dataVec[1].append(values)
-
-    test = "test"
+                np.append(values, float(value))
+        trainl.append(np.asarray(values))
 
 print("Folders to be converted:")
-dataVec = [[], []]
+trainl = []
+traind = []
 for root, dirs, files in os.walk(path, topdown=False):
     for name in dirs:
         print(os.path.join(root, name))
-        readFolder(os.path.join(root, name), dataVec)
+        readFolder(os.path.join(root, name), trainl, traind)
 
 filename = 'gulasch.pkl.gz'
+traind = np.asarray(traind)
+trainl = np.asarray(trainl)
+dataObj = {"trainl": trainl, "traind":traind}
 with gzip.open(os.path.join(path, filename), 'wb') as handle:
-    pkl.dump(dataVec, handle, protocol=pkl.HIGHEST_PROTOCOL)
+    pkl.dump(dataObj, handle, protocol=pkl.HIGHEST_PROTOCOL)
