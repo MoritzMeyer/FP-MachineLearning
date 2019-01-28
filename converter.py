@@ -32,10 +32,6 @@ def readFolder(path, trainlBox, trainlLane, traind):
     for fileName in pictures:
         'load Image into numpy array'
         img = Image.open(os.path.join(path, fileName))
-        traind.append(np.asarray(img))
-
-        actualPicIndex = len(traind) - 1
-        traind[actualPicIndex] = traind[actualPicIndex][:,:,0:1]
 
         'hole den Index des Bildes um die entsprechenden Daten aus carCoords.txt zu holen'
         fileNameParts = fileName.split('.')
@@ -44,7 +40,11 @@ def readFolder(path, trainlBox, trainlLane, traind):
 
         'Wenn zu dem Bild keine Informationen getrackt wurden abbrechen'
         if not index < len(carCoords):
-            break
+            continue
+
+        traind.append(np.asarray(img))
+        actualPicIndex = len(traind) - 1
+        traind[actualPicIndex] = traind[actualPicIndex][:, :, 0:1]
 
         'Die line mit carCoords zum Bild'
         coordData = carCoords[index]
