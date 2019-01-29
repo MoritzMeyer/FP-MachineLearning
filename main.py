@@ -66,7 +66,7 @@ with tf.Session() as sess:
     # fcLayer1
     Z = 120
     # allocate variables
-    W3 = tf.Variable(npr.uniform(-0.01, 0.01, [22 * 27 * 16 + 8, Z]), dtype=tf.float32, name="W3");
+    W3 = tf.Variable(npr.uniform(-0.01, 0.01, [22 * 27 * 16, Z]), dtype=tf.float32, name="W3");
     b3 = tf.Variable(npr.uniform(-0.01, 0.01, [1, Z]), dtype=tf.float32, name="b3");
     # compute activations
     a3 = tf.nn.relu(tf.matmul(a2flat, W3) + b3);
