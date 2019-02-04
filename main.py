@@ -59,7 +59,7 @@ with tf.Session() as sess:
 
     print(a2flat.shape);
     # Den Vector der BoundingBox anhängen
-    # a2flat = tf.concat([a2flat, boxPlaceholder], axis=1);
+    a2flat = tf.concat([a2flat, boxPlaceholder], axis=1);
     print("a2flat.shape: ", a2flat.shape);
     print(a2)
 
@@ -89,6 +89,9 @@ with tf.Session() as sess:
     b5 = tf.Variable(npr.uniform(-0.01, 0.01, [1, Z3]), dtype=tf.float32, name="b4");
 
     logits = tf.matmul(a4, W5) + b5;
+
+
+    print("logits shape", logits.shape);
 
     ## loss
     lossBySample = tf.nn.softmax_cross_entropy_with_logits_v2(logits=logits, labels=labelPlaceholder);
