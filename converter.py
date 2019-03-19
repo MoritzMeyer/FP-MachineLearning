@@ -17,7 +17,7 @@ if not os.path.isdir(path):
 
 'Diese Funktion liest aus einem Ordner alle Dateien aus und wandelt jedes Bild' \
 'Die dazugehörige Zeile in einen Datenvektor um'
-def readFolder(path, trainlBox, trainlLane, traind):
+def readFolder(path, trainlBox, trainlLane, traind, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners):
     carCoords = []
     with open(os.path.join(path, "carCoords.txt")) as f:
         carCoords.extend(f.readlines())
@@ -32,6 +32,7 @@ def readFolder(path, trainlBox, trainlLane, traind):
     for fileName in pictures:
         'load Image into numpy array'
         img = Image.open(os.path.join(path, fileName))
+        width, height = img.size
 
         'hole den Index des Bildes um die entsprechenden Daten aus carCoords.txt zu holen'
         fileNameParts = fileName.split('.')
@@ -68,21 +69,65 @@ def readFolder(path, trainlBox, trainlLane, traind):
         trainlLane.append(np.asarray(laneValues))
         trainlBox.append(np.asarray(boxValues))
 
+    calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
 
+
+def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners):
+    for i in range(len(traind)):
+        'picutreBB1 = np.append(np.array(traind[i]).reshape((height, width)), np.zeros((height, width)))'
+        picutreBB_full = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
+        picutreBB_canvas = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
+        picutreBB_corners = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
+
+        x1 = int(round(trainlBox[i][0] * width))
+        x2 = int(round(trainlBox[i][4] * width))
+        y1 = int(round(trainlBox[i][1] * height))
+        y2 = int(round(trainlBox[i][3] * height))
+
+        'picture_full'
+        for x in range(x1, x2+1):
+            for y in range(y1, y2+1):
+                picutreBB_full[y + height][x][0] = 1
+
+        'picture_canvas'
+        for x in range(x1, x2+1):
+            picutreBB_canvas[y1 + height][x][0] = 1
+            picutreBB_canvas[y2 + height][x][0] = 1
+
+        for y in range(y1, y2+1):
+            picutreBB_canvas[y + height][x1][0] = 1
+            picutreBB_canvas[y + height][x2][0] = 1
+
+        'picture_corners'
+        picutreBB_corners[y1][x1] = 1
+        picutreBB_corners[y1][x2] = 1
+        picutreBB_corners[y2][x1] = 1
+        picutreBB_corners[y2][x2] = 1
+
+        trainlPictureBB_full.append(np.asarray(picutreBB_full))
+        trainlPictureBB_canvas.append(np.asarray(picutreBB_canvas))
+        trainlPictureBB_corners.append(np.asarray(picutreBB_corners))
 
 print("Folders to be converted:")
 trainlBox = []
 trainlLane = []
 traind = []
+trainlPictureBB_full = []
+trainlPictureBB_canvas = []
+trainlPictureBB_corners = []
 for root, dirs, files in os.walk(path, topdown=False):
     for name in dirs:
         print(os.path.join(root, name))
-        readFolder(os.path.join(root, name), trainlBox, trainlLane, traind)
+        readFolder(os.path.join(root, name), trainlBox, trainlLane, traind, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
 
 filename = 'gulasch.pkl.gz'
 traind = np.asarray(traind)
 trainlBox = np.asarray(trainlBox)
 trainlLane = np.asarray(trainlLane)
-dataObj = {"trainlBox": trainlBox, "trainlLane": trainlLane, "traind":traind}
+trainlPictureBB_full = np.asarray(trainlPictureBB_full)
+trainlPictureBB_canvas = np.asarray(trainlPictureBB_canvas)
+trainlPictureBB_corners = np.asarray(trainlPictureBB_corners)
+dataObj = {"trainlBox": trainlBox, "trainlLane": trainlLane, "traind": traind, "trainlPictureBB_full": trainlPictureBB_full, "trainlPictureBB_canvas": trainlPictureBB_canvas, "trainlPictureBB_corners": trainlPictureBB_corners}
+#dataObj = {"trainlPictureBB_full": trainlPictureBB_full, "trainlPictureBB_canvas": trainlPictureBB_canvas, "trainlPictureBB_corners": trainlPictureBB_corners}
 with gzip.open(os.path.join(path, filename), 'wb') as handle:
     pkl.dump(dataObj, handle, protocol=pkl.HIGHEST_PROTOCOL)
