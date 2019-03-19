@@ -62,10 +62,12 @@ def readFolder(path, trainlBox, trainlLane, traind):
             laneValues[int(pictureValues[0])] = 1
 
             'Danach die Daten der BoundingBox holen'
-            for i in range(1, 8):
-                np.append(boxValues, float(pictureValues[i]))
+            for i in range(1, 9):
+                bbCoordValue = float(pictureValues[i])
+                boxValues[i-1] = bbCoordValue
         trainlLane.append(np.asarray(laneValues))
         trainlBox.append(np.asarray(boxValues))
+
 
 
 print("Folders to be converted:")
