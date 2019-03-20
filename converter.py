@@ -71,9 +71,13 @@ def readFolder(path, trainlBox, trainlLane, traind, trainlPictureBB_full, trainl
 def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners):
     for i in range(len(traind)):
         'picutreBB1 = np.append(np.array(traind[i]).reshape((height, width)), np.zeros((height, width)))'
-        picutreBB_full = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
-        picutreBB_canvas = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
-        picutreBB_corners = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
+        #picutreBB_full = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
+        #picutreBB_canvas = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
+        #picutreBB_corners = np.append(np.array(traind[i]).reshape((height, width, 1)), np.zeros((height, width, 1)), axis=0)
+
+        picutreBB_full = np.pad(traind[i], [(0, 0), (0, traind[i].shape[1]), (0, 0)], mode="constant")
+        picutreBB_canvas = np.pad(traind[i], [(0, 0), (0, traind[i].shape[1]), (0, 0)], mode="constant")
+        picutreBB_corners = np.pad(traind[i], [(0, 0), (0, traind[i].shape[1]), (0, 0)], mode="constant")
 
         x1 = int(round(trainlBox[i][0] * width))
         x2 = int(round(trainlBox[i][4] * width))
@@ -83,22 +87,22 @@ def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainl
         'picture_full'
         for x in range(x1-1, x2):
             for y in range(y1-1, y2):
-                picutreBB_full[y + height][x][0] = 1
+                picutreBB_full[y][x + width][0] = 1
 
         'picture_canvas'
         for x in range(x1-1, x2):
-            picutreBB_canvas[y1-1 + height][x][0] = 1
-            picutreBB_canvas[y2-1 + height][x][0] = 1
+            picutreBB_canvas[y1-1][x + width][0] = 1
+            picutreBB_canvas[y2-1][x + width][0] = 1
 
         for y in range(y1-1, y2):
-            picutreBB_canvas[y + height][x1-1][0] = 1
-            picutreBB_canvas[y + height][x2-1][0] = 1
+            picutreBB_canvas[y][x1-1 + width][0] = 1
+            picutreBB_canvas[y][x2-1 + width][0] = 1
 
         'picture_corners'
-        picutreBB_corners[y1-1 + height][x1-1][0] = 1
-        picutreBB_corners[y1-1 + height][x2-1][0] = 1
-        picutreBB_corners[y2-1 + height][x1-1][0] = 1
-        picutreBB_corners[y2-1 + height][x2-1][0] = 1
+        picutreBB_corners[y1-1][x1-1 + width][0] = 1
+        picutreBB_corners[y1-1][x2-1 + width][0] = 1
+        picutreBB_corners[y2-1][x1-1 + width][0] = 1
+        picutreBB_corners[y2-1][x2-1 + width][0] = 1
 
         trainlPictureBB_full.append(np.asarray(picutreBB_full))
         trainlPictureBB_canvas.append(np.asarray(picutreBB_canvas))
