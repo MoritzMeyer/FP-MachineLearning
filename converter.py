@@ -99,10 +99,10 @@ def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainl
             picutreBB_canvas[y + height][x2][0] = 1
 
         'picture_corners'
-        picutreBB_corners[y1][x1] = 1
-        picutreBB_corners[y1][x2] = 1
-        picutreBB_corners[y2][x1] = 1
-        picutreBB_corners[y2][x2] = 1
+        picutreBB_corners[y1 + height][x1] = 1
+        picutreBB_corners[y1 + height][x2] = 1
+        picutreBB_corners[y2 + height][x1] = 1
+        picutreBB_corners[y2 + height][x2] = 1
 
         trainlPictureBB_full.append(np.asarray(picutreBB_full))
         trainlPictureBB_canvas.append(np.asarray(picutreBB_canvas))
