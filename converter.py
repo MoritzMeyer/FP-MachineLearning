@@ -85,24 +85,24 @@ def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainl
         y2 = int(round(trainlBox[i][3] * height))
 
         'picture_full'
-        for x in range(x1, x2+1):
-            for y in range(y1, y2+1):
+        for x in range(x1-1, x2):
+            for y in range(y1-1, y2):
                 picutreBB_full[y + height][x][0] = 1
 
         'picture_canvas'
-        for x in range(x1, x2+1):
-            picutreBB_canvas[y1 + height][x][0] = 1
-            picutreBB_canvas[y2 + height][x][0] = 1
+        for x in range(x1-1, x2):
+            picutreBB_canvas[y1-1 + height][x][0] = 1
+            picutreBB_canvas[y2-1 + height][x][0] = 1
 
-        for y in range(y1, y2+1):
-            picutreBB_canvas[y + height][x1][0] = 1
-            picutreBB_canvas[y + height][x2][0] = 1
+        for y in range(y1-1, y2):
+            picutreBB_canvas[y + height][x1-1][0] = 1
+            picutreBB_canvas[y + height][x2-1][0] = 1
 
         'picture_corners'
-        picutreBB_corners[y1 + height][x1] = 1
-        picutreBB_corners[y1 + height][x2] = 1
-        picutreBB_corners[y2 + height][x1] = 1
-        picutreBB_corners[y2 + height][x2] = 1
+        picutreBB_corners[y1-1 + height][x1-1][0] = 1
+        picutreBB_corners[y1-1 + height][x2-1][0] = 1
+        picutreBB_corners[y2-1 + height][x1-1][0] = 1
+        picutreBB_corners[y2-1 + height][x2-1][0] = 1
 
         trainlPictureBB_full.append(np.asarray(picutreBB_full))
         trainlPictureBB_canvas.append(np.asarray(picutreBB_canvas))
