@@ -3,7 +3,7 @@ import pickle as pkl
 import gzip
 import os
 
-path = "C:\\Users\\Moritz\\Pictures\\unity\\gulasch8LanesWithCargulasch.pkl.gz"
+path = "C:\\Users\\Moritz\\Pictures\\unity\\gulasch8LanesWithCar\\gulasch.pkl.gz"
 
 if os.path.getsize(path) > 0:
     with gzip.open(path, 'rb') as handle:

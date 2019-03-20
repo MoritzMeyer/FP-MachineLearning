@@ -32,7 +32,6 @@ def readFolder(path, trainlBox, trainlLane, traind, trainlPictureBB_full, trainl
     for fileName in pictures:
         'load Image into numpy array'
         img = Image.open(os.path.join(path, fileName))
-        width, height = img.size
 
         'hole den Index des Bildes um die entsprechenden Daten aus carCoords.txt zu holen'
         fileNameParts = fileName.split('.')
@@ -68,9 +67,6 @@ def readFolder(path, trainlBox, trainlLane, traind, trainlPictureBB_full, trainl
                 boxValues[i-1] = bbCoordValue
         trainlLane.append(np.asarray(laneValues))
         trainlBox.append(np.asarray(boxValues))
-
-    calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
-
 
 def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners):
     for i in range(len(traind)):
@@ -119,6 +115,8 @@ for root, dirs, files in os.walk(path, topdown=False):
     for name in dirs:
         print(os.path.join(root, name))
         readFolder(os.path.join(root, name), trainlBox, trainlLane, traind, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
+
+calcBBPicture(traind, trainlBox, 100, 120, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
 
 filename = 'gulasch.pkl.gz'
 traind = np.asarray(traind)
