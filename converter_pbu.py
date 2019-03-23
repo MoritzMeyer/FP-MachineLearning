@@ -69,13 +69,10 @@ def readFolder(path, trainlBox, trainlLane, traind, trainlPictureBB_full, trainl
 
 def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners):
     for i in range(len(traind)):
-        picutreBB_full = np.pad(traind[i],[(0,0),(0,traind[i].shape[1]),(0,0)],mode="constant")
-
-        print(traind[i].shape, picutreBB_full.shape)
-        print(np.pad(traind[i],[(0,0),(0,10),(0,0)],mode="constant").shape)
-        image = Image.fromarray(np.pad(traind[i],[(0,0),(0,traind[i].shape[1]),(0,0)],mode="constant"),'RGB') # Create a PIL image
-        image.show()
-
+        picutreBB_full = np.pad(traind[i], [(0, 0), (0, traind[i].shape[1]), (0, 0)], mode="constant")
+        picutreBB_canvas = np.pad(traind[i], [(0, 0), (0, traind[i].shape[1]), (0, 0)], mode="constant")
+        picutreBB_corners = np.pad(traind[i], [(0, 0), (0, traind[i].shape[1]), (0, 0)], mode="constant")
+        print (picutreBB_full.shape)
         x1 = int(round(trainlBox[i][0] * width))
         x2 = int(round(trainlBox[i][4] * width))
         y1 = int(round(trainlBox[i][1] * height))
@@ -84,11 +81,40 @@ def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainl
         'picture_full'
         for x in range(x1-1, x2):
             for y in range(y1-1, y2):
-                picutreBB_full[x][y+width][0:3] = 255
+                picutreBB_full[y][x + width][0:2] = 255
 
-        image = Image.fromarray(picutreBB_full,'RGB') # Create a PIL image
-        image.show()
-        image.save('out_compare.jpg', format='png')
+        'picture_canvas'
+        for x in range(x1-1, x2):
+            picutreBB_canvas[y1-1][x + width][0:2] = 255
+            picutreBB_canvas[y2-1][x + width][0:2] = 255
+
+        for y in range(y1-1, y2):
+            picutreBB_canvas[y][x1-1 + width][0:2] = 255
+            picutreBB_canvas[y][x2-1 + width][0:2] = 255
+
+        'picture_corners'
+        picutreBB_corners[y1-1][x1-1 + width][0:2] = 255
+        picutreBB_corners[y1-1][x2-1 + width][0:2] = 255
+        picutreBB_corners[y2-1][x1-1 + width][0:2] = 255
+        picutreBB_corners[y2-1][x2-1 + width][0:2] = 255
+
+
+        imgs = []
+        imgs.append(Image.fromarray(picutreBB_canvas,'RGB')) # Create a PIL image
+
+        imgs.append(Image.fromarray(picutreBB_corners,'RGB')) # Create a PIL image
+
+        imgs.append(Image.fromarray(picutreBB_full,'RGB')) # Create a PIL image
+        outImg = Image.new('RGB', (imgs[0].size[0], imgs[0].size[1] * 3))
+        y = 0
+        print ('here')
+        for image in imgs:
+            outImg.paste(image,(0,y))
+            y+=image.size[1]
+
+        outImg.show()
+        outImg.save('out_compare.png', format='png')
+        exit(0)
         time.sleep(30)
 
 
