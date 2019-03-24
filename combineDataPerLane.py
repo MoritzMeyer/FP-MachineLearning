@@ -39,7 +39,7 @@ def combineDataFromFolder(folderPath):
 
             with open(os.path.join(combinedDataPerLanePath, "carCoords.txt")) as f:
                 carCoordsInCombinedDirectory.extend(f.readlines())
-                carCoordsInCombinedDirectory = [x.strip() for x in carCoords]
+                carCoordsInCombinedDirectory = [x.strip() for x in carCoordsInCombinedDirectory]
 
             'Get all Pictures'
             pictures = []
