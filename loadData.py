@@ -13,7 +13,7 @@ trainlBox = data["trainlBox"]
 trainlLane = data["trainlLane"]
 traind = data["traind"]
 trainlPictureBB_full = data["trainlPictureBB_full"]
-trainlPictureBB_canvas = data["trainlPictureBB_full"]
+trainlPictureBB_canvas = data["trainlPictureBB_canvas"]
 trainlPictureBB_corners = data["trainlPictureBB_corners"]
 
 print("trainlBox.shape: ", trainlBox.shape)
