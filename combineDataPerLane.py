@@ -63,7 +63,7 @@ def combineDataFromFolder(folderPath):
                 pictureData = coordData.split(';')
 
                 'erst das Bild kopieren'
-                shutil.copy2(os.path.join(extractDataPathPerLane, fileName), os.path.join(combinedDataPerLanePath, nameParts[0] + "_" + nameParts[1] + "_" + str(indexOffset + index) + "." + fileNameParts[1]))
+                shutil.copy2(os.path.join(extractDataPathPerLane, fileName), os.path.join(combinedDataPerLanePath, nameParts[0] + "_" + nameParts[1] + "_" + str(indexOffset + index).zfill(5) + "." + fileNameParts[1]))
 
                 'dann die Daten in den txt-File schreiben'
                 with open(os.path.join(combinedDataPerLanePath, "carCoords.txt"), "a") as carCoordsFile:

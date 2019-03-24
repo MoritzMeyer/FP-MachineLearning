@@ -61,7 +61,7 @@ def extractDataFromFolder(path):
             os.mkdir(lanePath)
 
         'erst das Bild kopieren und umbenenne'
-        shutil.copy2(os.path.join(path, fileName), os.path.join(lanePath, nameParts[0] + "_" + nameParts[1] + "_" + str(laneDataIndizes[lane]) + "." + fileNameParts[1]))
+        shutil.copy2(os.path.join(path, fileName), os.path.join(lanePath, nameParts[0] + "_" + nameParts[1] + "_" + str(laneDataIndizes[lane]).zfill(5) + "." + fileNameParts[1]))
 
         'dann die Textcoords schreiben (wenn die erst geschrieben würden und das Bild nicht kopiert werden sollte (warum auch immer), passen die lines nicht mehr)'
         with open(os.path.join(lanePath, "carCoords.txt"), "a") as carCoordsFile:
@@ -73,7 +73,7 @@ for root, dirs, files in os.walk(path, topdown=False):
     print(dirs, path)
     for name in dirs:
         print(os.path.join(root, name))
-        if not name == extractDataFolder:
+        if (not name == extractDataFolder) or (not name == "AllPicturesPerLane"):
             'Wenn PicturesPerLane bereits existiert, löschen'
             if os.path.isdir(os.path.join(root, name, extractDataFolder)):
                 shutil.rmtree(os.path.join(root, name, extractDataFolder))
