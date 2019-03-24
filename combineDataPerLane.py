@@ -80,5 +80,5 @@ for root, dirs, files in os.walk(path, topdown=False):
     print(dirs, path)
     for name in dirs:
         print(os.path.join(root, name))
-        if (not name == extractDataFolder) or (not name == combinedDataFolder):
+        if (not name == extractDataFolder) and (not name == combinedDataFolder):
             combineDataFromFolder(os.path.join(root, name))
