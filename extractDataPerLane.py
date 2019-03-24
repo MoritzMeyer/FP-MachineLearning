@@ -74,4 +74,7 @@ for root, dirs, files in os.walk(path, topdown=False):
     for name in dirs:
         print(os.path.join(root, name))
         if not name == extractDataFolder:
+            'Wenn PicturesPerLane bereits existiert, löschen'
+            if os.path.isdir(os.path.join(root, name, extractDataFolder)):
+                shutil.rmtree(os.path.join(root, name, extractDataFolder))
             extractDataFromFolder(os.path.join(root, name))
