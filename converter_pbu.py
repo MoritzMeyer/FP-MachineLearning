@@ -27,7 +27,7 @@ def readFolder(path, trainlBox, trainlLane, traind, trainlPictureBB_full, trainl
     for root, dirs, files in os.walk(path, topdown=False):
         pictures.extend(files)
 
-    pictures = [name for name in pictures if 'screen_120x100_00133.jpg' in name]
+    pictures = [name for name in pictures if '.jpg' in name]
 
     for fileName in pictures:
         'load Image into numpy array'
@@ -39,9 +39,10 @@ def readFolder(path, trainlBox, trainlLane, traind, trainlPictureBB_full, trainl
         index = int(nameParts[2])
 
         'Wenn zu dem Bild keine Informationen getrackt wurden abbrechen'
+        print ("HERE1")
         if not index < len(carCoords):
             continue
-
+        print("HERE")
         traind.append(np.asarray(img))
         actualPicIndex = len(traind) - 1
         #traind[actualPicIndex] = traind[actualPicIndex][:, :, 0:1]
@@ -67,6 +68,8 @@ def readFolder(path, trainlBox, trainlLane, traind, trainlPictureBB_full, trainl
         trainlLane.append(np.asarray(laneValues))
         trainlBox.append(np.asarray(boxValues))
 
+if os.path.isdir("./temp")== False:
+    os.mkdir("./temp")
 def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners):
     for i in range(len(traind)):
         picutreBB_full = np.pad(traind[i], [(0, 0), (0, traind[i].shape[1]), (0, 0)], mode="constant")
@@ -113,10 +116,7 @@ def calcBBPicture(traind, trainlBox, width, height, trainlPictureBB_full, trainl
             y+=image.size[1]
 
         outImg.show()
-        outImg.save('out_compare.png', format='png')
-        exit(0)
-        time.sleep(30)
-
+        outImg.save('./temp/out_compare'+str(i)+'.png', format='png')
 
 
         trainlPictureBB_full.append(np.asarray(picutreBB_full))
@@ -134,7 +134,7 @@ for root, dirs, files in os.walk(path, topdown=False):
         print(os.path.join(root, name))
         readFolder(os.path.join(root, name), trainlBox, trainlLane, traind, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
 
-calcBBPicture(traind, trainlBox, 100, 120, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
+calcBBPicture(traind, trainlBox, 192, 108, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
 
 filename = 'gulasch.pkl.gz'
 traind = np.asarray(traind)
