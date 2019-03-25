@@ -70,7 +70,7 @@ def extractDataFromFolder(path):
 
 print("Folders to be processed:")
 for root, dirs, files in os.walk(path, topdown=False):
-    print(dirs, path)
+    #print(dirs, path)
     for name in dirs:
         print(os.path.join(root, name))
         if (not name == extractDataFolder) and (not name == "AllPicturesPerLane"):

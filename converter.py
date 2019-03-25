@@ -117,8 +117,9 @@ trainlPictureBB_canvas = []
 trainlPictureBB_corners = []
 for root, dirs, files in os.walk(path, topdown=False):
     for name in dirs:
-        print(os.path.join(root, name))
-        readFolder(os.path.join(root, name), trainlBox, trainlLane, traind, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
+        if os.path.exists(os.path.join(root, name, "carCoords.txt")):
+            print(os.path.join(root, name))
+            readFolder(os.path.join(root, name), trainlBox, trainlLane, traind, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
 
 calcBBPicture(traind, trainlBox, 120, 100, trainlPictureBB_full, trainlPictureBB_canvas, trainlPictureBB_corners)
 
