@@ -35,6 +35,9 @@
 	      <p class="styleAPI">public bool <span class="styleAPIBold">Destroy</span>()</p>
           <p class="styleAPIText">Removes the connection object</p>
           <p class="styleAPIText">&nbsp;</p>
+          <p class="styleAPI">public int <span class="styleAPIBold">FindNearestConnectionIndex</span>(Vector3 position)</p>
+          <p class="styleAPIText">Returns the nearest connection index to the past Vector3 position</p>
+          <p class="styleAPIText">&nbsp;</p>
           <p class="styleAPI">public ERConnectionData[] <span class="styleAPIBold">GetConnectionData</span>()</p>
           <p class="styleAPIText">Returns the currently available connection data of the connection object</p>
           <p class="styleAPIText">&nbsp;</p>
@@ -46,6 +49,12 @@
           <p class="styleAPIText">&nbsp;</p>
           <p class="styleAPI">public string <span class="styleAPIBold">GetName</span>()</p>
           <p class="styleAPIText">Returns the name of the connection object</p>
+          <p class="styleAPIText">&nbsp;</p>
+          <p class="styleAPI">public Vector3 <span class="styleAPIBold">GetConnectionWorldPosition</span>(int&nbsp;connectionIndex)</p>
+          <p class="styleAPIText">Returns the world position of <span class="styleAPIValue">connectionIndex</span></p>
+          <p class="styleAPIText">&nbsp;</p>
+          <p class="styleAPI">public Vector3[] <span class="styleAPIBold">GetConnectionWorldPositions</span>()</p>
+          <p class="styleAPIText">Returns the world positions of all the connections of this connection prefab</p>
           <p class="styleAPIText">&nbsp;</p>
           <p class="styleAPI">public void <span class="styleAPIBold">SetPosition</span>(Vector3 position)</p>
 <p class="styleAPIText">Updates the position of the connection object</p>

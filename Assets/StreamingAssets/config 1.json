@@ -1,0 +1,80 @@
+{
+  "NumberOfTracks": 2,
+  "CarSpeed": 50,
+  "IsSelfDriving": false,
+  "Seed": null,
+  "RoadItems": [
+    {
+      "Length": 50,
+      "Type": 0,
+      "MinCars": 1,
+      "MaxCars": 2,
+      "Angle": 0,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 50,
+      "Type": 1,
+      "Angle": 90,
+      "MinCars": 0,
+      "MaxCars": 2,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 100,
+      "Type": 0,
+      "Angle": 0,
+      "MinCars": 0,
+      "MaxCars": 3,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 50,
+      "Type": 1,
+      "MinCars": 0,
+      "MaxCars": 2,
+      "Angle" : -90,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 100,
+      "Type": 1,
+      "Angle": 180,
+      "MinCars": 0,
+      "MaxCars": 4,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 200,
+      "Type": 0,
+      "MinCars": 0,
+      "MaxCars": 4,
+      "Angle" : 0,
+      "HeightDifference": 15,
+      "Seed": null
+    },
+    {
+      "Length": 100,
+      "Type": 1,
+      "Angle": 180,
+      "MinCars": 0,
+      "MaxCars": 4,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 300,
+      "Type": 0,
+      "MinCars": 0,
+      "MaxCars": 7,
+      "Angle" : 0,
+      "HeightDifference": 0,
+      "Seed": null
+    }
+  ]
+}

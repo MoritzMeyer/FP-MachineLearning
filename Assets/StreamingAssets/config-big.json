@@ -1,0 +1,161 @@
+{
+  "NumberOfTracks": 2,
+  "CarSpeed": 50,
+  "IsSelfDriving": false,
+  "Seed": null,
+  "RoadItems": [
+    {
+      "Length": 50,
+      "Type": 1,
+      "MinCars": 1,
+      "MaxCars": 2,
+      "Angle": 25,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 150,
+      "Type": 0,
+      "MinCars": 2,
+      "MaxCars": 4,
+      "Angle": 90,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 150,
+      "Type": 1,
+      "MinCars": 2,
+      "MaxCars": 4,
+      "Angle": 90,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 150,
+      "Type": 0,
+      "MinCars": 2,
+      "MaxCars": 4,
+      "Angle": -90,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 150,
+      "Type": 1,
+      "MinCars": 2,
+      "MaxCars": 4,
+      "Angle": 35,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 150,
+      "Type": 0,
+      "MinCars": 2,
+      "MaxCars": 4,
+      "Angle": -45,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 150,
+      "Type": 1,
+      "MinCars": 2,
+      "MaxCars": 4,
+      "Angle": -45,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 150,
+      "Type": 0,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": -45,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 250,
+      "Type": 1,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": 90,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 250,
+      "Type": 1,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": 90,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 250,
+      "Type": 0,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": -90,
+      "HeightDifference": 0,
+      "Seed": null
+    },   
+    {
+      "Length": 250,
+      "Type": 1,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": -90,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 250,
+      "Type": 1,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": -90,
+      "HeightDifference": 0,
+      "Seed": null
+    }, 
+    {
+      "Length": 250,
+      "Type": 1,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": 90,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 250,
+      "Type": 1,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": 90,
+      "HeightDifference": 0,
+      "Seed": null
+    },   
+    {
+      "Length": 150,
+      "Type": 1,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": -45,
+      "HeightDifference": 0,
+      "Seed": null
+    },
+    {
+      "Length": 250,
+      "Type": 1,
+      "MinCars": 4,
+      "MaxCars": 8,
+      "Angle": -45,
+      "HeightDifference": 0,
+      "Seed": null
+    }                                        
+  ]
+}

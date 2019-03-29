@@ -43,6 +43,9 @@
 <p class="styleAPIText">Builds the final road network and manipulates the terrain according the passed parameters. The terrain will only be updated according the passed array of road objects.<br>
   <br>
   NOTE: <a href="#RestoreRoadNetwork" class="link">RestoreRoadNetwork()</a> will target the last build process. Do not use the above  consecutively without restoring the road network first if you do want to be able to restore the full road network. This mainly relates to restoring the terrain to its original state of before creating the road network.</p>
+  <p class="styleAPIText">&nbsp;</p>
+<p class="styleAPI">public ERRoad <span class="styleAPIBold">CenterPivotPoints</span>()</p>
+<p class="styleAPIText">This will set the pivot points of all road objects to the center of the bounding box. This will be reset after each road update so it is recommended to use this only for testing and final builds.</p>
 <p class="styleAPIText">&nbsp;</p>
 <p class="styleAPI">public ERRoad <span class="styleAPIBold">ConnectRoads</span>(ERRoad road1, ERRoad road2)</p>
 <p class="styleAPIText">Connects two roads at the nearest markers.</p>

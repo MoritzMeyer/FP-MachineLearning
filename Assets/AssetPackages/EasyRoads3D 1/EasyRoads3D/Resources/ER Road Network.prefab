@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateInt: 10
   newSplatMapRestoreCode: 0
-  toolbarInt: 0
+  toolbarInt: 4
   roadToolbarInt: 0
   markerToolbarInt: 0
   menuTexs:
@@ -115,40 +115,52 @@ MonoBehaviour:
   subMenuTexs: []
   cprefab: {fileID: 0}
   nodeHandleTexture: {fileID: 0}
-  lockedTexture: {fileID: 2800000, guid: 8fb7d6b5f8b40f34e8048f47afa20f2a, type: 3}
-  unLockedTexture: {fileID: 2800000, guid: eb319a63188c2d44bacc8572c8a2111a, type: 3}
+  lockedTexture: {fileID: 2800000, guid: 95bcc58da45020345aeaaaf89ea8a000, type: 3}
+  unLockedTexture: {fileID: 2800000, guid: 8b70bdf1ef68d1f429183b0746cc82be, type: 3}
   selRoadTexture: {fileID: 2800000, guid: 46e81e5d2c8b2144582558b65e45db86, type: 3}
   headerTexture: {fileID: 2800000, guid: 16ef664a0f7023c4a94fa58f50bf2899, type: 3}
   sceneGUITex: {fileID: 0}
   roadObjectsParent: {fileID: 400000}
   connectionObjectsParent: {fileID: 400002}
-  OQCOODCOCQ: {fileID: 0}
+  ODQDDOODQQ: {fileID: 0}
   roadTypes:
   - roadTypeName: Default Road
-    id: 1
+    id: 11
     timestamp: 0
-    roadWidth: 5
-    faceDistance: 4
-    angleTreshold: 0
+    roadWidth: 6
+    faceDistance: 2
+    angleTreshold: 45
     uvTiling: 1
     uv4Type: 0
+    type: 0
     detailDistance: 0
     planarUVs: 0
     outerIndent: 0
     roadShapeDataActive: 0
     roadShapeData:
       nodes: []
+      priorityNodeIndexLeft: 0
+      priorityNodeIndexRight: 0
+      nodesV3: []
       lanes: []
+      leftLanes: 0
+      rightLanes: 0
       symmetrical: 0
       leftSidewalkOffset: 0
       rightSidewalkOffset: 0
+      outerLaneMarkingLeftIndex: 0
+      outerLaneMarkingRightIndex: 0
       selectedNode: 0
       selectedLaneNode: 0
+      isset: 0
     roadShape: []
     roadShapeExt: []
+    roadShapeExt2: []
     doConnectionTri: 
+    doConnectionTriExt: 
     roadShapeUVs: []
     roadShapeExtUVs: []
+    roadShapeExtUVs2: []
     roadShapeUVs2: []
     hardEdge: 
     roadShapeVecsString: 
@@ -175,7 +187,7 @@ MonoBehaviour:
     expandLevel: 0
     smoothLevel: 0
     splatOpacity: 0
-    terrainDeformation: 0
+    terrainDeformation: 1
     castShadow: 0
     randomnessFlag: 0
     randomYPosition: 0
@@ -211,7 +223,6 @@ MonoBehaviour:
   targetMaterial: {fileID: 0}
   sourceTerrain: {fileID: 0}
   roadMaterials:
-  - dirt material
   - road material
   connectionMaterials:
   - crossing material
@@ -219,7 +230,7 @@ MonoBehaviour:
   selectedMaterial: 0
   selectedConnectionMaterial: 0
   materials: []
-  selectedRoadRoadType: 1
+  selectedRoadRoadType: 0
   roadOptions: 1
   markerOptions: 1
   showRoadSideObjects: 0
@@ -237,7 +248,7 @@ MonoBehaviour:
   selectedCrossingMaterial: 0
   crossingTextureInfoIndex: 0
   handleSelection: 0
-  positionHandleSelection: 0
+  positionHandleSelection: 1
   markerDirXZ: 0
   defaultCrossing: {fileID: 100000, guid: 82d1055f236419543a306cf502974500, type: 2}
   defaultTCrossing: {fileID: 100000, guid: 3c97eb06152ef28429cd0dcca2b0f38d, type: 2}
@@ -248,13 +259,14 @@ MonoBehaviour:
   showAllPrefabs: 1
   standardPrefabsFlag: 0
   sceneSettingsFoldOut: 0
-  sceneRoadsFoldOut: 0
+  sceneRoadsFoldOut: 1
   scenePrefabsFoldOut: 0
   sidewalksFoldOut: 0
   terrainManagementFoldOut: 0
   importRoadDataFoldOut: 0
   lodGroupsFoldOut: 0
   defaultMaterialsFoldOut: 0
+  aiTrafficFoldout: 0
   kmlFlag: 0
   osmFlag: 0
   useOSMHeights: 0
@@ -267,14 +279,14 @@ MonoBehaviour:
   osmTerrainLeftLat: 0
   osmTerrainRightLat: 0
   terrainMinIndent: 2.9296875
-  minIndent: 5
+  minIndent: 2.9296875
   minSurrounding: 5
   maxIndentSurrounding: 50
   terrainY: 0
   terrainDetailSplatX: 0.48828125
   terrainDetailSplatY: 0.48828125
   detailOffsetVec: {x: 0.48828125, y: 0, z: 0.48828125}
-  raise: 0
+  raise: 0.02
   baseVector: {x: 0, y: 0, z: 0}
   mirrorCrossings: 1
   terrainNames:
@@ -284,7 +296,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   terrainSplatTextures:
-  - Splat 1 - Grass
+  - Splat 1 - Grass ER ER
   activeTerrain: {fileID: 0}
   activeTerrainY: 0
   selectedTerrain: 0
@@ -342,6 +354,7 @@ MonoBehaviour:
   osmServiceFlag: 1
   osmTrackFlag: 1
   osmPathFlag: 1
+  kmlRoadType: 0
   lodGroups: 0
   LODLevels: 4
   LODLevelValues:
@@ -358,7 +371,7 @@ MonoBehaviour:
   hideSurfaces: 1
   useLightProbes: 0
   hideLockedObjects: 0
-  OCDOQQQOQD: 0
+  OOQDOOODCQ: 0
   isInBuildMode: 0
   progressFlag: 0
   progressTerrain: 1
@@ -401,8 +414,8 @@ MonoBehaviour:
   soDeformationObjects: []
   soSplatmapObjects: []
   buildSOinEditMode: 1
-  tangentsInEditMode: 0
-  calculateSmoothNormals: 1
+  tangentsInEditMode: 1
+  calculateSmoothNormals: 0
   importSideObjectsAlert: 1
   importRoadPresetsAlert: 0
   importCrossingPresetsAlert: 0
@@ -432,15 +445,16 @@ MonoBehaviour:
   hideSurfaceHandles: 0
   dirtyBool: 0
   dirtyOnSceneBool: 0
-  OCOQOOCOOC: 1
-  OQCOODCOCQScript: {fileID: 0}
-  ODDCQCCQDQCrossingsScript: {fileID: 0}
-  ODDCQCCQDQScript: {fileID: 0}
-  OQCOODCOCQElement: -1
-  OCOODDODOQ: -1
-  OCCQDDCDOD: {fileID: 0}
-  OCCCODDQOC: {fileID: 0}
-  OQQCDOODQD: -1
+  forceRoadNetworkSelect: 0
+  OQCQCQOCQD: 1
+  ODQDDOODQQScript: {fileID: 0}
+  ODQOOQCOCOCrossingsScript: {fileID: 0}
+  ODQOOQCOCOScript: {fileID: 0}
+  ODQDDOODQQElement: -1
+  ODDODOODQO: -1
+  OQQOCQDQCD: {fileID: 0}
+  ODCQDDDDQO: {fileID: 0}
+  OCQDDCQDOC: -1
   selectedRoadSOMarker: -1
   selectedMarkerNode: -1
   selectedMarkerNodes: 
@@ -474,6 +488,7 @@ MonoBehaviour:
   SoTestObject: {fileID: 0}
   lockRoadNetwork: 0
   showNotifications: 1
+  multipleTerrainsWarning: 0
   vegetationStudio: 0
   vegetationStudioActive: 0
   vegetationStudioGrassPerimeter: 2
@@ -481,6 +496,12 @@ MonoBehaviour:
   vegetationStudioTreePerimeter: 4
   vegetationStudioObjectPerimeter: 3
   vegetationStudioLargeObjectPerimeter: 4
+  aiTraffic: 0
+  displayLaneData: 0
+  rightHandDriving: 1
+  laneHandleColour: {r: 1, g: 1, b: 1, a: 0.5}
+  laneHandleSelectedColour: {r: 1, g: 1, b: 0, a: 0.5}
+  updateQueue: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,20 +525,64 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: updateInt
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: positionHandleSelection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: roadTypes.Array.data[0].uvTiling
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: roadTypes.Array.data[0].id
+      propertyPath: toolbarInt
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minIndent
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: toolbarInt
-      value: 0
+      propertyPath: lockedTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 95bcc58da45020345aeaaaf89ea8a000, type: 3}
+    - target: {fileID: 0}
+      propertyPath: unLockedTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 8b70bdf1ef68d1f429183b0746cc82be, type: 3}
+    - target: {fileID: 0}
+      propertyPath: doTangents
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: tangentsInEditMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: raise
+      value: .0199999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: roadTypes.Array.data[0].id
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: roadTypes.Array.data[0].terrainDeformation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: roadTypes.Array.data[0].faceDistance
-      value: 4
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: roadTypes.Array.data[0].angleTreshold
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: roadTypes.Array.data[0].roadWidth
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: headerTexture
@@ -527,18 +592,6 @@ Prefab:
       propertyPath: selRoadTexture
       value: 
       objectReference: {fileID: 2800000, guid: 46e81e5d2c8b2144582558b65e45db86, type: 3}
-    - target: {fileID: 0}
-      propertyPath: lockedTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: 8fb7d6b5f8b40f34e8048f47afa20f2a, type: 3}
-    - target: {fileID: 0}
-      propertyPath: unLockedTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: eb319a63188c2d44bacc8572c8a2111a, type: 3}
-    - target: {fileID: 0}
-      propertyPath: doTangents
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100004}

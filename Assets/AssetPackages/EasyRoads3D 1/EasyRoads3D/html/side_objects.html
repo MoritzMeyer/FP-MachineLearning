@@ -281,17 +281,17 @@ Average height: The instance Y position will match the average height<br>
 <p class="header2">Side Objects workflow across scenes</p>
 <p>All Side Objects used in a project are stored in the assets folder. All side objects used in a scene are stored in the scene data. </p>
 <p>After creating a new scene and adding a Road Network object, the system will check whether side objects are available in the project, in that case you will be asked whether you want to add these side objects to the newly created Road Network Object. If you select No, you will still be able to import all these side objects or a selection of the project side objects. Manually importing a selection of the project side objects will help to keep the side objects list clear and concise.</p>
-<p>Whenever you make changes to a side object, the associated side object in the project folder will be updated as well. When selecting the Road Network in a scene, the system will check for side object changes and will update the scene side object data. At this moment the scene itself is not updated, you can do this manually. In a next update you will be asked whether you want to update the scene in this case.</p>
+<p>After making changes to a side object, the associated side object in the project folder will be updated as well. When selecting the Road Network in a scene, the system will check for side object changes and will update the scene side object data. At this moment the scene itself is not updated, you can do this manually. In a next update you will be asked whether you want to update the scene in this case.</p>
 <p class="style1">&nbsp;</p>
 <p class="header2">Handling side objects in the scene</p>
 <p class="header2">&nbsp;</p>
 <p class="style1"><strong>Road Types</strong></p>
-<p class="style1">You can assign side objects to road types in General Settings &gt; Road Types. When ever you create a new road the side objects will automatically activated and build along the road.</p>
+<p class="style1">You can assign side objects to road types in General Settings &gt; Road Types. These side objects will be automatically activated for new instances of this road type.</p>
 <p class="style1">[screenshot side objects list]</p>
-<p class="style1">You will still be able to activate / deactivate side objects for an exisiting road at any time in the Inspector by selecting that road (click one of the blue marker handles) and activating / deactivating the specific side object in the Active Side Objects list  for the selected road.</p>
+<p class="style1">It will still be possible to activate / deactivate side objects for an exisiting road at any time in the Inspector by selecting that road (click one of the blue marker handles) and activating / deactivating the specific side object in the  Side Objects section  for the selected road.</p>
 <p class="style1">&nbsp;</p>
 <p class="style21">Controlling side objects per marker</p>
-<p class="style1">By selecting a marker you can tweak the side object in several ways. Select the marker and select the side object you want to change from the dropdown. You will see a number of marker specific options.</p>
+<p class="style1">After selecting a marker  the side object can be fine tuned in several ways. Select the marker and select the side object you want to change from the dropdown. A number of marker specific options are available.</p>
 <ul>
   
   <li><span class="propertyStyle">Selected Side Object:</span> The below options will affect the currently selected side object int the dropdown</li>
@@ -303,7 +303,10 @@ Average height: The instance Y position will match the average height<br>
     <br>
   </li>
   <li><strong class="propertyStyle">Include in Spline Shape:</strong> this is for side objects build along their own spline shape relative to the main track using Sideways Distance Settings. By disabling markers you can control the shape of the side object better in for example sharp corners.</li>
-  <li><strong class="propertyStyle">Sideways Distance:</strong> The Sideways Distance for this marker relative to the center of the track. </li>
+  <li><strong class="propertyStyle">[obsolete] Sideways Distance:</strong> The Sideways Distance for this marker relative to the center of the track .</li>
+  <li><span class="propertyStyle">Rotation Angle:</span> Manual rotations useful to add for example damage to fences / barriers. The angle (amount of damage) can be entered here.</li>
+  <li><span class="propertyStyle">Rotation Distance:</span> The distance over which the rotation should take place.</li>
+  <li><span class="propertyStyle">Rotation Center Position:</span> The origin of the rotation on this marker section.</li>
 </ul>
 <p class="style1">&nbsp;</p>
 <p class="style1">&nbsp;</p>

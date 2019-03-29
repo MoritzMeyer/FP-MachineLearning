@@ -110,8 +110,8 @@ MonoBehaviour:
   soSplinePoints: []
   soSplinePointsLeft: []
   soSplinePointsRight: []
-  ODDQCOQCCQ: []
-  OCOODCDQCQ: []
+  OCOQQCOOCQ: []
+  OQOOQOQOOQ: []
   meshVecs: []
   meshUVs: []
   meshUVs2: []
@@ -177,8 +177,8 @@ MonoBehaviour:
   segPoints: []
   testPoints: []
   testPoints2: []
-  OQCQDCCCCD: {x: 0, y: 0, z: 0}
-  OOQODCQCDC: {x: 0, y: 0, z: 0}
+  OCQCQCDOQD: {x: 0, y: 0, z: 0}
+  OOODQOQCQD: {x: 0, y: 0, z: 0}
   endLeft: {x: 0, y: 0, z: 0}
   endRight: {x: 0, y: 0, z: 0}
   testmesh: {fileID: 0}
@@ -243,6 +243,7 @@ MonoBehaviour:
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+  laneData: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

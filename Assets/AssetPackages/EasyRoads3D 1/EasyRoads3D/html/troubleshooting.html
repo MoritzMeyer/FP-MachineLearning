@@ -27,6 +27,13 @@
 	      <hr>
 	      <p class="style21">&nbsp;</p>
 	      <p class="style21">&nbsp;</p>
+	      <p class="style1"><strong><em>After importing the Demo package no road types and side objects are available</em></strong></p>
+	      <p class="style1">The demo package itself does not have road type and side object data stored in the project folder. The reason for this is that importing a package update in a later stage would overwrite this data including possibly changed road types, side objects and newly added road types, side objects.</p>
+	      <p class="style1">In order to make the road types and side objects available in other scenes, please open the demo scene, select the road network objects in the hierarchy and deselect it. At this point the project road type, side object data will be updated. The road types and side objects will now be available in other scenes.</p>
+	      <p class="style1">&nbsp;</p>
+	      <p class="style1"><strong><em>Shader&nbsp;error&nbsp;in&nbsp;'EasyRoads3D/Unity 5 Standard':&nbsp;invalid subscript&nbsp;'uv2'&nbsp;at</em></strong>...</p>
+	      <p class="style1">This is related to Unity 2018. There is an issue in Unity 2018 with modified versions of the Standard shader. This is not critical, to fix this, please select the shader in the project folder (/Assets/EasyRoads3D/shaders/) right click the shader and select &quot;Reimport&quot;.</p>
+	      <p class="style1">&nbsp;</p>
 	      <p class="style1"><strong><em>When I select the main Road Network game object a crossing prefab gets selected</em></strong></p>
           <p class="style1">This will happen after you created a new dynamic crossing prefab and instantiated it in the scene to make changes. It will be visible in the hierarchy as a child of &quot;Temp Crossing Prefabs&quot;. Make sure to finalize it when you are ready with this. You can do that by clicking the <strong>Exit Prefab Editor</strong> button in the Inspector or by clicking one of the toolbar tabs at the top in the Inspector. You will be asked to save changes to the prefab if there are changes. Afterwards the main <strong>Road Network</strong> game object will be  selected automatically. As long as the new crossing prefab is not completed. this prefab will be  selected when selecting the main <strong>Road Network</strong> game object.          </p>
           <p class="style1">&nbsp;</p>
@@ -51,7 +58,7 @@
 <p class="style1">This will also happen for custom crossings when the geometry structure of the road does not match the custom crossing connection.</p>
 <p class="style1">&nbsp;</p>
 <p class="style1"><a name="terrain"></a></p>
-<p class="style1"><strong><em>The terrain is clipping through  the road or the road is floating above the terrain</em></strong></p>
+<p class="style1"><strong><em>The terrain is clipping through  the road or the road is floating above the terrain / z-fighting</em></strong></p>
 <p class="style1">There are several situations that can cause this: </p>
   <p class="style1">1)   the Unity terrain object stores height values in decimals between 0 and   1, meaning it is impossible to apply negative height values. The roads   must be at or above the terrains game object Y position.Also take into   account the nature of spline shapes. When placing two markers (A and   B) exactly on the terrain objects Y position and a third marker (C) is raised a   bit higher, the road shape (spline curve) between A and B will go   slightly below the terrain objects Y position, the terrain will be   rendered above the road in this area because it cannot be pushed lower. Random tilting &amp; Bumpiness values below 0 should also be avoided with road at terrain y = 0. <br>
     <br>
